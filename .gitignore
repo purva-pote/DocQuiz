@@ -3,3 +3,10 @@
 .swiftpm/configuration/
 .build/
 DerivedData/
+.env
+
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
