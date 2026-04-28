@@ -16,7 +16,7 @@ class PDFViewController: UIViewController {
     private var generatedMCQs: [MCQuestion] = []
     
     // Gemini API Client
-    private let geminiClient = GeminiAPIClient(apiKey: "AIzaSyDRl0jeTUOY6lmT_PUbd_aMquGIfQujhxQ")
+    private let geminiClient = GeminiAPIClient(apiKey: "AIzaSyBiW7TWiJ3rhJg9zCabLpF3oxjTO875wys")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,14 +77,12 @@ class PDFViewController: UIViewController {
     }
     
     @objc private func uploadButtonTapped() {
-        // Create document picker
-        documentPicker = UIDocumentPickerViewController(documentTypes: ["com.adobe.pdf"], in: .import)
-        documentPicker?.delegate = self
-        documentPicker?.allowsMultipleSelection = false
-        
-        if let documentPicker = documentPicker {
-            present(documentPicker, animated: true)
+        guard let url = Bundle.main.url(forResource: "eco", withExtension: "pdf") else {
+            statusLabel.text = "pdf not found in app bundle"
+            print("Could not find pdf — make sure it's added to the Xcode project target")
+            return
         }
+        extractTextFromPDF(url: url)
     }
     
     private func extractTextFromPDF(url: URL) {

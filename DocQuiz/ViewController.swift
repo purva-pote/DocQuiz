@@ -16,7 +16,7 @@ class LegacyViewController: UIViewController {
     private var documentPicker: UIDocumentPickerViewController?
     
     // Gemini API Client
-    private let geminiClient = GeminiAPIClient(apiKey: "AIzaSyDRl0jeTUOY6lmT_PUbd_aMquGIfQujhxQ")
+    private let geminiClient = GeminiAPIClient(apiKey: "AIzaSyBiW7TWiJ3rhJg9zCabLpF3oxjTO875wys")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,7 +124,14 @@ class LegacyViewController: UIViewController {
             present(documentPicker, animated: true)
         }
     }
-    
+    func loadBundledPDF() {
+        guard let path = Bundle.main.path(forResource: "se", ofType: "pdf"),
+              let data = NSData(contentsOfFile: path) else {
+            print("PDF not found in bundle")
+            return
+        }
+        // pass 'data' wherever your app normally sends picked PDF data
+    }
     private func extractTextFromPDF(url: URL) {
         // Reset UI before starting
         mcqContainerView.isHidden = true
