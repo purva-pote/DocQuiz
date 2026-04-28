@@ -1,7 +1,3 @@
-Based on the project name **DocQuiz** and the common profile of projects by **Purva Pote** (who focuses on AI-driven web applications and Java/JavaScript tools), this README is designed for an AI-powered quiz generator that transforms documents into interactive assessments.
-
------
-
 # 📝 DocQuiz
 
 [](https://opensource.org/licenses/MIT)
